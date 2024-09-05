@@ -18,3 +18,9 @@ To use the gem you can simply call the generate method and pass in any chat prom
 By default it uses llama3.1 so if you want to use a different model use the optional model: option
 
 `Everyai.generate("Hello Mixtral AI Model", model: "mixtral")`
+
+To list the available models you can use the ls command
+
+`Everyai.ls`
+
+
