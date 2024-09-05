@@ -10,4 +10,5 @@ Gem::Specification.new do |s|
     "https://rubygems.org/gems/everyai"
   s.license       = "MIT"
   s.add_dependency 'ollama-ai', '~> 1.3.0'
+  s.metadata["source_code_uri"] = "https://github.com/Every-LLM/every-ai-gem"
 end
