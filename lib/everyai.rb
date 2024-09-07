@@ -1,36 +1,30 @@
-require "ollama-ai"
+require 'net/http'
+require 'uri'
+require 'json'
 
 class Everyai
-  attr_reader :client
-  def initialize
-    @client = Ollama.new(
-      credentials: { address: 'http://localhost:11434' },
-      opiions: { server_sent_events: true }
-    )
-  end
-
-  def generate(prompt, model)
-    result = client.generate(
-      { model: model,
-        prompt: prompt }
-    )
-    result.map { |r| r['response']}.join
-  rescue Ollama::Errors::RequestError
-    puts "This Ollama model is not installed. Type y to install or any key to continue"
-    answer = gets.chomp.downcase
-    `ollama run #{model}` if answer == "y"
-  end
+  API_GENERATIONS_PATH = "http://every-llm.com/api/v1/generations"
 
   class << self
-    def generate(prompt, model: "llama3.1")
-      @ai ||= new
-      @ai.generate(prompt, model)
+    @api_key = nil
+
+    def api_key=(key)
+      @api_key = key
     end
 
-    def ls
-      puts "Listing Ollama AI Models"
-      str = `ollama list`
-      puts str.split("\n")
+    def api_key
+      @api_key
+    end
+      
+    def generate(prompt, model: "llama3.1")
+      url = URI.parse(API_GENERATIONS_PATH)
+      response = Net::HTTP.post_form(url, { "prompt": prompt, "model": model, "token": api_key })
+      body = JSON.parse(response.body)
+      if response.kind_of? Net::HTTPSuccess
+        body["results"]
+      else
+        body["errors"]
+      end
     end
   end
 end
