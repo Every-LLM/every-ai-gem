@@ -11,7 +11,7 @@ To install the gem you can add it your app with the following command
 
 ### Usage
 
-Before you can use the library you must set an API Key if you need to create one visit the (Every LLM Website)[https://every-llm.com]
+Before you can use the library you must set an API Key if you need to create one visit the [Every LLM Website](https://every-llm.com)
 
 `Everyai.api_key = "my-secret-api-key-123567"`
 
