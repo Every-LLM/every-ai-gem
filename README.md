@@ -19,6 +19,10 @@ By default it uses llama3.1 so if you want to use a different model use the opti
 
 `Everyai.generate("Hello Mixtral AI Model", model: "mixtral")`
 
+You can also use the short hand available methods to interact with specific models
+
+`Everyai.chatgpt("Hey ChatGPT whats going on")`
+
 To list the available models you can use the ls command
 
 `Everyai.ls`

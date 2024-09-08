@@ -3,7 +3,8 @@ require 'uri'
 require 'json'
 
 class Everyai
-  API_GENERATIONS_PATH = "http://every-llm.com/api/v1/generations"
+  DOMAIN = "http://localhost:3000" #"https://every-llm.com"  
+  API_GENERATIONS_PATH = "#{DOMAIN}/api/v1/generations"
 
   class << self
     @api_key = nil
@@ -25,6 +26,18 @@ class Everyai
       else
         body["errors"]
       end
+    end
+
+    def chatgpt(prompt, model: "chatgpt")
+      generate(prompt, model: model )
+    end
+
+    def llama(prompt, model: "llama3.1")
+      generate(prompt, model: model)
+    end
+
+    def anthropic(prompt, model: "anthropic")
+      generate(prompt, model: model)
     end
   end
 end
