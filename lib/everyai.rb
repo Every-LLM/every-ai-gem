@@ -3,7 +3,7 @@ require 'uri'
 require 'json'
 
 class Everyai
-  DOMAIN = "http://localhost:3000" #"https://every-llm.com"  
+  DOMAIN = "https://every-llm.com" #"http://localhost:3000"   
   API_GENERATIONS_PATH = "#{DOMAIN}/api/v1/generations"
 
   class << self
