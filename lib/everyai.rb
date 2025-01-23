@@ -3,8 +3,8 @@ require 'uri'
 require 'json'
 
 class Everyai
-  DOMAIN = "https://every-llm.com" 
-  #DOMAIN = "http://localhost:3000"
+  #DOMAIN = "https://every-llm.com" 
+  DOMAIN = "http://localhost:3000"
   API_GENERATIONS_PATH = "#{DOMAIN}/api/v1/generations"
 
   class << self
@@ -44,3 +44,4 @@ class Everyai
 end
 
 require_relative 'everyai/agent'
+require_relative 'everyai/chatbot'
