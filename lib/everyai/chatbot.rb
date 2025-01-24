@@ -36,14 +36,15 @@ class Everyai
       end
     end
 
-    attr_reader :response_data, :id, :name, :agent_id, :iframe_code
+    attr_reader :response_data, :id, :name, :agent_id, :iframe_code_popup, :iframe_code_inline
 
     def initialize(**data)
       @response_data = data
       @id       = data[:chatbot_id]
       @name     = data[:name]
       @agent_id = data[:agent_id]
-      @iframe_code = data[:iframe_code]
+      @iframe_code_popup = data[:iframe_code_popup]
+      @iframe_code_inline = data[:iframe_code_inline]
     end
   end
 end
