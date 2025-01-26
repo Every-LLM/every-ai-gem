@@ -41,9 +41,9 @@ class Everyai
       @instructions  = data[:instructions]
     end
 
-    def generate(prompt, model: "llama3.2", **model_options)
+    def generate(prompt, **model_options)
       url = URI.parse(AGENT_GENERATION_PATH)
-      response = Net::HTTP.post_form(url, { "prompt": prompt, "model": model, "token": Everyai.api_key, "agent_id": id, "options": model_options.to_json })
+      response = Net::HTTP.post_form(url, { "prompt": prompt, "model": llm_model, "token": Everyai.api_key, "agent_id": id, "options": model_options.to_json })
       body = JSON.parse(response.body)
       if response.kind_of? Net::HTTPSuccess
         body["results"]
